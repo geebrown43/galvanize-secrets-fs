@@ -7,6 +7,9 @@ function createUser(users) {
     users.code = code;
    
 	return db('users').insert(users).returning(['id', 'code']);
+
+
+	
 }
 //This is allowing the client to grab the object id not the array of id
 function getUserById(id) {
