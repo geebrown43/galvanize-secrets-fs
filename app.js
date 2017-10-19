@@ -7,11 +7,12 @@ const app = express()
 
 app.set('view engine', 'hbs')
 
+
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(express.static('public'))
 
-app.use('/', (req, res, next) => {
+app.get('/', (req, res, next) => {
 	res.render('index')
 })
 
