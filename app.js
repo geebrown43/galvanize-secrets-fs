@@ -4,6 +4,7 @@ const db = require('./db/query')
 
 const port = process.env.PORT || 3000;
 const app = express()
+const routing = require('./routes/routing')
 
 app.set('view engine', 'hbs')
 
@@ -12,17 +13,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(express.static('public'))
 
-app.get('/', (req, res, next) => {
-	res.render('index')
-})
+app.use('/', routing)
 
-app.get('/views/create.hbs', (req, res, next) => {
-	res.render('create')
-})
 
-app.get('/views/login.hbs', (req, res, next) => {
-	res.render('login')
-})
 
 app.post('/api/users', (req, res, next) => {
    
