@@ -9,19 +9,29 @@ app.set('view engine', 'hbs')
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(express.static('public'))
 
 app.get('/', (req, res, next) => {
-    res.render('create')
+	res.render('index')
+})
+
+app.get('/views/create.hbs', (req, res, next) => {
+	res.render('create')
+})
+
+app.get('/views/login.hbs', (req, res, next) => {
+	res.render('login')
 })
 
 app.post('/api/users', (req, res, next) => {
-    console.log('hit post')
-    db.createUser(req.body)
+   
+	db.createUser(req.body)
+	
     .then(user => res.status(201).json(user))
 		.catch(err => res.status(500).send(err));
-    // .then(()=> {
-    //     res.send('hi')
-    // })
+    // // .then(()=> {
+    //     res.send(users)
+//   })
 		
 });
 

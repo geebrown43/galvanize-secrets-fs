@@ -1,23 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Galvanize Secrets:Create Account</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Galvanize Secrets | Create Account</title>
 </head>
+
 <body>
+    <section class="hero is-primary is-large">
+        <nav class="navbar">
+            <div class="container">
+                <h2>Galvanize Secrets</h2>
+                <div id="navbarMenuHeroA" class="navbar-menu">
+                    <div class="navbar-end">
+                        <a class="navbar-item is-active" href="views/create.hbs">
+                            Create Account
+                        </a>
+                        <a class="navbar-item" href="views/login.hbs">
+                            Login
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    </section>
+
+
+
+    <div class="container margin-top">
+        <div class="columns">
+            <div class="column is-half">
+                <form id="create_account" action='/api/users' method='post'>
+                <div class="field">
+
+                    <label class="label">UserName</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="e.g John Smith" name="username">
+                    </div>
+                    <label class="label">Email</label>
+                    <p class="control has-icons-left has-icons-right">
+                        <input class="input " type="email" placeholder="Email" name="email">
+                        <span class="icon is-small is-left">
+                            <i class="fa fa-envelope"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fa fa-check"></i>
+                        </span>
+                    </p>
+                    <button>Create Account</button>
+
+                </div>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+    {{!--
     <div class="main">
         <h1>Create Account</h1>
-        <form id="create_account" action='/api/users' method='post'>
-            <div>
-                <input type="text" name="username" placeholder="Username">
-                <input type="text" name="email" placeholder="Email">
-                <button>Create Account</button>
-            </div>
 
-        </form>
-    </div>
-    
+        <div>
+            <input type="text" name="username" placeholder="Username">
+            <input type="text" name="email" placeholder="Email">
+            <button>Create Account</button>
+        </div>
+
+        </form> --}} {{!-- </div> --}}
+
 </body>
+
 </html>
