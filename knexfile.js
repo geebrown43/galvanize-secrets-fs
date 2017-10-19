@@ -4,10 +4,7 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection: {
-      host: 'localhost',
-      database: 'galvanize-secrets'
-    }
+    connection: 'postgres://localhost/galvanize-secrets'
   },
 
   staging: {

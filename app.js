@@ -5,14 +5,27 @@ const db = require('./db/query')
 const port = process.env.PORT || 3000;
 const app = express()
 
+app.set('view engine', 'hbs')
+
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-// This allowing the client to post user information
+
+app.get('/', (req, res, next) => {
+    res.render('create')
+})
+
 app.post('/api/users', (req, res, next) => {
-	db.createUser(req.body)
-		.then(user => res.status(201).json(user))
+    console.log('hit post')
+    db.createUser(req.body)
+    .then(user => res.status(201).json(user))
 		.catch(err => res.status(500).send(err));
+    // .then(()=> {
+    //     res.send('hi')
+    // })
+		
 });
+
+
 app.get('/api/users', (req,res) => {
     db.getAllUsers()
     .then(users => res.json(users))

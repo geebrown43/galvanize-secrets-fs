@@ -2,8 +2,10 @@ const db = require('./connection');
 
 //This is allowing the client to insert user info and will return a unique id and code
 function createUser(users) {
+    console.log('hit query')
 	const code = generateRandomNumber();
-	users.code = code;
+    users.code = code;
+   
 	return db('users').insert(users).returning(['id', 'code']);
 }
 //This is allowing the client to grab the object id not the array of id
