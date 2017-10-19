@@ -16,16 +16,7 @@
         <nav class="navbar">
             <div class="container">
                 <h2>Galvanize Secrets</h2>
-                <div id="navbarMenuHeroA" class="navbar-menu">
-                    <div class="navbar-end">
-                        <a class="navbar-item is-active" href="views/create.hbs">
-                            Create Account
-                        </a>
-                        <a class="navbar-item" href="views/login.hbs">
-                            Login
-                        </a>
-                    </div>
-                </div>
+                
             </div>
         </nav>
 
@@ -59,22 +50,25 @@
                 </div>
                 </form>
             </div>
+
+            <div class="column is-half">
+                
+                <form id="create_account" action='/api/users/login' method='post'>
+                <div class="field">
+
+                    <label class="label">Code</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Enter Code" name="code">
+                    </div>
+                    
+                    <button>Login</button>
+
+                </div>
+                </form>
+            </div>
         </div>
-
-
     </div>
 
-    {{!--
-    <div class="main">
-        <h1>Create Account</h1>
-
-        <div>
-            <input type="text" name="username" placeholder="Username">
-            <input type="text" name="email" placeholder="Email">
-            <button>Create Account</button>
-        </div>
-
-        </form> --}} {{!-- </div> --}}
 
 </body>
 
