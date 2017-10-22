@@ -15,20 +15,44 @@ app.use(express.static('public'))
 
 app.use('/', routing)
 
+let arr = ''
 
+createAlert = () => {
+	alert(arr)
+}
 
 app.post('/api/users', (req, res, next) => {
-   
 	db.createUser(req.body)
-	
-    .then(user => res.status(201).json(user))
-		.catch(err => res.status(500).send(err));
+	//.then(user => res.redirect('/views/login.hbs'))
+	.then(user => {
+		res.status(201).json(user)
+		// for(let i in user){
+		// 	console.log(user[i])
+		// }
+	arr = user[0]
+	console.log(typeof user[0])
+
+	createAlert()
+	})
+
+	// 	.catch(err => res.status(500).send(err));
     // // .then(()=> {
     //     res.send(users)
 //   })
 		
 });
 
+app.post('/api/secrets', (req, res, next)=> {
+
+	db.createSecret(req.body)
+	.then(secrets => res.json(secrets))
+	
+})
+
+app.get('/api/secrets', (req,res) => {
+    db.getAllSecrets()
+    .then(secrets => res.json(secrets))
+})
 
 app.get('/api/users', (req,res) => {
     db.getAllUsers()

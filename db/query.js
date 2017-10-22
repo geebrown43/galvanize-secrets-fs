@@ -2,14 +2,16 @@ const db = require('./connection');
 
 //This is allowing the client to insert user info and will return a unique id and code
 function createUser(users) {
-    console.log('hit query')
+	console.log('hit query')
 	const code = generateRandomNumber();
-    users.code = code;
-   
-	return db('users').insert(users).returning(['id', 'code']);
+	users.code = code;
 
+	let response = db('users').insert(users).returning('code')
+	return response
+}
 
-	
+createSecret = (secrets) => {
+	return db('secrets').insert(secrets).returning(['secret'])
 }
 //This is allowing the client to grab the object id not the array of id
 function getUserById(id) {
@@ -25,12 +27,20 @@ function login(code) {
 }
 
 getAllUsers = () => {
-    return db.select('*').from('users');
+	return db.select('*').from('users');
 }
+
+getAllSecrets = () => {
+	return db.select('*').from('secrets');
+}
+
+
 
 module.exports = {
 	createUser,
 	getUserById,
-    login,
-    getAllUsers
+	login,
+	getAllUsers,
+	createSecret,
+	getAllSecrets
 };

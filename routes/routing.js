@@ -14,4 +14,7 @@ router.get('/views/login.hbs', (req, res, next) => {
 	res.render('login')
 })
 
+router.get('/views/views/secrets.hbs', (req, res, next) =>{
+	res.render('secrets')
+})
 module.exports = router;
